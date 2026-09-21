@@ -29,6 +29,15 @@ Web Awesome follows <a href="https://semver.org/" class="appearance-plain">Seman
 
 {% include "changelog-email-signup.njk" %}
 
+## Unreleased
+
+:::added
+
+- Added the experimental `<wa-timeline>` and `<wa-timeline-item>` components for showing a chronological list of events, such as an order history, activity feed, or changelog
+  - `<wa-timeline>`'s `animate-on-scroll` attribute draws each connector as it scrolls into view
+
+:::
+
 ## 3.13.0
 
 <small><time datetime="2026-09-16">September 16th, 2026</time></small>
