@@ -33,10 +33,11 @@ export default class WaTimeline extends WebAwesomeElement {
   @property({ reflect: true }) orientation: 'vertical' | 'horizontal' = 'vertical';
 
   /**
-   * Where each item's content sits relative to the timeline's rail. `alternate` flips every other item to the
-   * opposite side of the rail from its sibling. Only applies when `orientation` is `vertical`.
+   * Which side of the timeline each item's marker sits on. `start` and `end` put every marker on that edge, with the
+   * item's content on the other side of the rail. `alternate` flips every other item to the opposite side of its
+   * sibling so the rail runs down the middle. Only applies when `orientation` is `vertical`.
    */
-  @property({ reflect: true }) alignment: 'start' | 'end' | 'alternate' = 'start';
+  @property({ attribute: 'marker-placement', reflect: true }) markerPlacement: 'start' | 'end' | 'alternate' = 'start';
 
   /**
    * Draws each item's connector progressively as it scrolls into view, instead of showing it fully drawn up front.

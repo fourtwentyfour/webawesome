@@ -27,12 +27,19 @@ describe('<wa-timeline>', () => {
         await expect(el).to.be.accessible();
       });
 
-      it('should default to a vertical orientation and start alignment', async () => {
+      it('should default to a vertical orientation and start marker placement', async () => {
         const el = await fixture<WaTimeline>(html`<wa-timeline></wa-timeline>`);
 
         expect(el.orientation).to.equal('vertical');
-        expect(el.alignment).to.equal('start');
+        expect(el.markerPlacement).to.equal('start');
         expect(el.animateOnScroll).to.be.false;
+      });
+
+      it('should reflect marker-placement', async () => {
+        const el = await fixture<WaTimeline>(html`<wa-timeline marker-placement="alternate"></wa-timeline>`);
+
+        expect(el.markerPlacement).to.equal('alternate');
+        expect(el.getAttribute('marker-placement')).to.equal('alternate');
       });
 
       it('should reflect animate-on-scroll', async () => {

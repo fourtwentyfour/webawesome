@@ -152,7 +152,7 @@ A résumé entry is the same idea taken further: a logo in the `marker` slot, ta
 
 ### Opposite Content
 
-Add content to an item's `opposite` slot to show it apart from the main content — commonly a date or timestamp, wrapped in a `<time>` element so the value stays machine-readable. Here it's the year in a company's own history.
+Add content to an item's `opposite` slot to show it on the other side of the rail from the main content — commonly a date or timestamp, wrapped in a `<time>` element so the value stays machine-readable. The column sizes itself to the widest opposite content in the timeline, so every item's rail stays in line. Here it's the year in a company's own history.
 
 ```html {.example}
 <wa-timeline>
@@ -279,12 +279,12 @@ A timeline is sized relative to the current font size, like a badge. Set `font-s
 </div>
 ```
 
-### Alignment
+### Marker Placement
 
-Set the `alignment` attribute to `end` to move every item's marker to the end side of the rail instead of the start. Set it to `alternate` to flip each item to the opposite side of its sibling, useful for a wide, centered timeline — like a product roadmap down the middle of a page.
+Set the `marker-placement` attribute to `end` to move every item's marker to the end side of the timeline instead of the start. Set it to `alternate` to flip each item to the opposite side of its sibling, useful for a wide, centered timeline — like a product roadmap down the middle of a page. Whatever the placement, `opposite` content stays across the rail from the main content.
 
 ```html {.example}
-<wa-timeline alignment="alternate">
+<wa-timeline marker-placement="alternate">
   <wa-timeline-item variant="success">
     <wa-badge slot="opposite" appearance="outlined" variant="success" pill>Shipped</wa-badge>
     <strong>Bulk actions in the data grid</strong>
@@ -306,7 +306,7 @@ Set the `alignment` attribute to `end` to move every item's marker to the end si
 Alternating pairs well with [`<wa-card>`](/docs/components/card) for each entry, and each item can size its own marker and connector independently with its own `--marker-size`/`--connector-width` — handy for calling out one milestone, like the first, as bigger than the rest.
 
 ```html {.example}
-<wa-timeline alignment="alternate" style="--marker-size: 0.75em; --connector-width: 0.15em;">
+<wa-timeline marker-placement="alternate" style="--marker-size: 0.75em; --connector-width: 0.15em;">
   <wa-timeline-item current style="--marker-size: 1.25em; --connector-width: 0.25em;">
     <time slot="opposite">January 2019</time>
     <wa-card>
@@ -604,7 +604,7 @@ The timeline renders an ordered list, and each `<wa-timeline-item>` carries `rol
 
 #### Current Entry
 
-The `current` attribute is purely visual — unlike `<wa-stepper>`'s active step, nothing about a timeline entry is announced as "current" to assistive technology, since a timeline doesn't track a single position the way a stepper does. If which entry is current matters to the reader, say so in the entry's visible content (e.g. "Out for delivery" instead of relying on the marker's highlight alone).
+The `current` attribute sets `aria-current="true"` on the item, so assistive technology announces which entry is current. The marker's highlight is still the only visual cue, so if which entry is current matters to the reader, say so in the entry's visible content too (e.g. "Out for delivery").
 
 #### Focus
 

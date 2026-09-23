@@ -3,10 +3,8 @@ import { css } from 'lit';
 export default css`
   @layer wa-component {
     :host {
-      /* Establishes this item as a style-query container so the rules below can branch on --_orientation/
-         --_alignment, both inherited from the parent <wa-timeline> (or set per-item for "alternate" via its
-         ::slotted() rules). Querying a container's own custom properties is valid for style queries, unlike size
-         queries, so no wrapper element is needed. */
+      /* A style-query container so the rules below can branch on --_orientation and --_marker-placement, both
+         inherited from the parent <wa-timeline> (or set per item for "alternate" via its ::slotted() rules). */
       container: wa-timeline-item / normal;
 
       --_marker-background: var(--wa-color-fill-normal, var(--wa-color-neutral-fill-normal));
@@ -21,27 +19,46 @@ export default css`
       --_marker-color: var(--wa-color-on-loud, var(--wa-color-neutral-on-loud));
     }
 
-    /* Layout. A 2-column grid by default: the rail (marker + connector) and the content, full width, no wasted
-       space. "end" mirrors it (still 2 columns, no centering). "alternate" switches to a 3-column grid — content /
-       rail / content — with each item only ever filling one of the two content columns, so the rail lands dead
-       center and stays there across every item, the same shape as MUI's alternating Timeline. */
+    /* Layout. <wa-timeline> owns the column tracks (opposite / rail / content) and this wrapper subgrids into them,
+       so the rail stays straight across every item regardless of how wide each item's opposite content is. */
     .item {
-      position: relative;
       display: grid;
-      grid-template-columns: auto 1fr;
-      align-items: start;
-      gap: 1em;
+      grid-template-columns: subgrid;
+      grid-column: 1 / -1;
+    }
+
+    /* The rail holds the marker and the connector below it. It stretches to the full row so the connector can reach
+       the next item's marker. */
+    .rail {
+      grid-column: rail;
+      grid-row: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .content {
-      grid-column: 2;
+      grid-column: content;
       grid-row: 1;
+      align-self: start;
       min-width: 0;
+      margin-inline-start: 1em;
+    }
+
+    .opposite {
+      grid-column: opposite;
+      grid-row: 1;
+      align-self: start;
+      min-width: 0;
+      margin-inline-end: 1em;
+      font-size: var(--wa-font-size-smaller);
+      line-height: var(--wa-line-height-condensed);
+      color: var(--wa-color-text-quiet);
+      text-align: end;
     }
 
     .marker {
-      grid-column: 1;
-      grid-row: 1;
       position: relative;
       z-index: 1;
       display: inline-flex;
@@ -70,18 +87,12 @@ export default css`
       }
     }
 
-    /* Connector. Each item draws a single line from its own marker toward the next item's — there's no boundary
-       color to negotiate with a neighbor the way <wa-step>'s two-half connector does, since a timeline entry's
-       color is just its own variant, not a "reached/not reached" state relative to a moving active pointer.
-
-       Centered on the marker with the same inset + translate(-50%) trick regardless of layout: in the 2-column
-       "start" grid, the rail column is a known, fixed marker-size wide, so its center is calc(marker-size / 2) from
-       the item's start edge. In the 3-column "alternate" grid the rail sits between two *equal* 1fr columns, so its
-       center is always exactly 50% of the item's width — no need to know either column's actual width. */
+    /* Connector. A single line from this item's marker toward the next one's, centered on the rail. It runs from just
+       below the marker to just above the next item's marker, reaching across the list's row gap. */
     .connector {
       position: absolute;
       z-index: 0;
-      inset-inline-start: calc(var(--marker-size, 2em) / 2);
+      inset-inline-start: 50%;
       inset-block-start: calc(var(--marker-size, 2em) + var(--connector-gap, 0.35em));
       inset-block-end: calc(-1 * var(--gap, var(--wa-space-l)) + var(--connector-gap, 0.35em));
       width: var(--connector-width, var(--wa-border-width-m));
@@ -127,39 +138,43 @@ export default css`
       }
     }
 
-    .opposite {
-      font-size: var(--wa-font-size-smaller);
-      line-height: var(--wa-line-height-condensed);
-      color: var(--wa-color-text-quiet);
-      margin-block-end: 0.25em;
-    }
-
-    .opposite[hidden] {
-      display: none;
-    }
-
-    /* Horizontal orientation: items sit in a row (see <wa-timeline>'s .list), so each item stacks its marker above
-       its content and the connector runs sideways to the next item's marker instead of downward — same centering
-       trick, rotated 90deg onto the block axis. */
+    /* Horizontal orientation: the item subgrids into <wa-timeline>'s three rows instead of its columns, stacking
+       opposite content above the marker and the main content below it. The connector runs sideways from this
+       marker to the next item's, which works because the list gives every item the same width. */
     @container wa-timeline-item style(--_orientation: horizontal) {
       .item {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
-        justify-items: center;
+        grid-template-columns: none;
+        grid-template-rows: subgrid;
+        grid-column: auto;
+        grid-row: 1 / -1;
         text-align: center;
       }
 
-      .marker {
-        grid-row: 1;
+      .opposite {
+        grid-column: auto;
+        grid-row: opposite;
+        margin-inline: 0;
+        margin-block-end: 1em;
+        text-align: center;
+      }
+
+      .rail {
+        grid-column: auto;
+        grid-row: rail;
       }
 
       .content {
-        grid-row: 2;
+        grid-column: auto;
+        grid-row: content;
+        margin-inline: 0;
+        margin-block-start: 1em;
       }
 
       .connector {
-        inset-inline-start: calc(var(--marker-size, 2em) + var(--connector-gap, 0.35em));
-        inset-inline-end: calc(-1 * var(--gap, var(--wa-space-l)) + var(--connector-gap, 0.35em));
+        inset-inline-start: calc(50% + var(--marker-size, 2em) / 2 + var(--connector-gap, 0.35em));
+        inset-inline-end: calc(
+          -50% - var(--gap, var(--wa-space-l)) + var(--marker-size, 2em) / 2 + var(--connector-gap, 0.35em)
+        );
         inset-block-start: calc(var(--marker-size, 2em) / 2);
         inset-block-end: auto;
         width: auto;
@@ -168,67 +183,42 @@ export default css`
       }
     }
 
-    /* Alignment: end mirrors the 2-column layout, marker on the far side, content still reading naturally from the
-       start edge — there's no second side to balance against, so the content column stays full width. Vertical
-       only; <wa-timeline> never sets --_alignment while horizontal, since a row of items has no side to flip. */
-    @container wa-timeline-item style(--_alignment: end) {
-      .item {
-        grid-template-columns: 1fr auto;
-      }
-
-      .marker {
-        grid-column: 2;
-      }
-
+    /* End placement mirrors the columns: content, then the rail, then opposite content on the far side. */
+    @container wa-timeline-item style(--_marker-placement: end) {
       .content {
-        grid-column: 1;
+        margin-inline: 0 1em;
       }
 
-      .connector {
-        inset-inline-start: auto;
-        inset-inline-end: calc(var(--marker-size, 2em) / 2);
-        translate: 50% 0;
+      .opposite {
+        margin-inline: 1em 0;
+        text-align: start;
       }
     }
 
-    /* Alternate flips each item to the opposite side of its sibling, with the rail re-centered every time (see
-       <wa-timeline>'s ::slotted() rules for how each item picks alternate-start vs. alternate-end). Because each
-       side's content column is only ~half the item's width instead of nearly all of it, right-aligning the
-       alternate-start side actually reads as "hugging the rail," not as a stray floating block. */
-    @container wa-timeline-item style(--_alignment: alternate-start) {
-      .item {
-        grid-template-columns: 1fr auto 1fr;
-      }
-
-      .marker {
-        grid-column: 2;
-      }
-
+    /* Alternate flips each item to the opposite side of its sibling (see <wa-timeline>'s ::slotted() rules for how
+       each item picks alternate-start vs. alternate-end). Whichever of content or opposite sits before the rail is
+       end-aligned so it hugs the rail rather than floating at the far edge. */
+    @container wa-timeline-item style(--_marker-placement: alternate-start) {
       .content {
         grid-column: 1;
+        margin-inline: 0 1em;
         text-align: end;
       }
 
-      .connector {
-        inset-inline-start: 50%;
+      .opposite {
+        grid-column: 3;
+        margin-inline: 1em 0;
+        text-align: start;
       }
     }
 
-    @container wa-timeline-item style(--_alignment: alternate-end) {
-      .item {
-        grid-template-columns: 1fr auto 1fr;
-      }
-
-      .marker {
-        grid-column: 2;
-      }
-
+    @container wa-timeline-item style(--_marker-placement: alternate-end) {
       .content {
         grid-column: 3;
       }
 
-      .connector {
-        inset-inline-start: 50%;
+      .opposite {
+        grid-column: 1;
       }
     }
   }

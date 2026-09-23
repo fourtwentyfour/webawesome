@@ -21,10 +21,17 @@ describe('<wa-timeline-item>', () => {
         await expect(wrapper).to.be.accessible();
       });
 
-      it('should reflect the current attribute to the current custom state', async () => {
+      it('should reflect the current attribute to the current custom state and aria-current', async () => {
         const el = await fixture<WaTimelineItem>(html`<wa-timeline-item current>Shipped</wa-timeline-item>`);
 
         expect(el.customStates.has('current')).to.be.true;
+        expect(el.getAttribute('aria-current')).to.equal('true');
+
+        el.current = false;
+        await el.updateComplete;
+
+        expect(el.customStates.has('current')).to.be.false;
+        expect(el.hasAttribute('aria-current')).to.be.false;
       });
 
       it('should hide the opposite wrapper when the opposite slot is empty', async () => {
