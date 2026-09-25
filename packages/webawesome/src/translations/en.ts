@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} moved to position ${position} of ${total}`,
   columns: 'Columns',
   compactPageXOfY: (page, total) => `${page} of ${total}`,
+  completed: 'Completed',
   copied: 'Copied',
   copy: 'Copy',
   createOption: value => `Create "${value}"`,
@@ -38,6 +39,7 @@ const translation: Translation = {
   dayPeriod: 'AM/PM',
   decrement: 'Decrement',
   deselectAllRows: 'Deselect all rows',
+  disabled: 'Disabled',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Empty',
@@ -62,6 +64,7 @@ const translation: Translation = {
   jumpForwardX: count => `Jump forward ${count} pages`,
   lastPage: 'Last page',
   loading: 'Loading',
+  locked: 'Locked',
   minute: 'Minute',
   month: 'Month',
   moreOptions: 'More Options',
@@ -73,7 +76,9 @@ const translation: Translation = {
   nextVideo: 'Next Video',
   nextYear: 'Next year',
   noData: 'No data',
+  noOptions: 'No options',
   noResults: 'No matching results',
+  notCompleted: 'Not completed',
   now: 'Now',
   numCharacters: num => {
     if (num === 1) return '1 character';
@@ -83,6 +88,11 @@ const translation: Translation = {
     if (num === 1) return '1 character remaining';
     return `${num} characters remaining`;
   },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'No options available';
+    if (num === 1) return '1 option available';
+    return `${num} options available`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return 'No options selected';
     if (num === 1) return '1 option selected';
@@ -90,6 +100,8 @@ const translation: Translation = {
   },
   numRowsCopied: num => (num === 1 ? '1 row copied' : `${num} rows copied`),
   numRowsSelected: num => (num === 1 ? '1 row selected' : `${num} rows selected`),
+  optionPosition: (label, position, total) => `${label}, ${position} of ${total}`,
+  optionsLoadError: 'Options could not be loaded',
   pageXOfY: (page, total) => `Page ${page} of ${total}`,
   pagination: 'Pagination',
   pause: 'Pause',
@@ -146,6 +158,8 @@ const translation: Translation = {
   sortColumn: 'Sort column',
   sortDescending: 'Sort descending',
   startDate: 'Start date',
+  steps: 'Steps',
+  stepXOfY: (step, total) => `Step ${step} of ${total}`,
   tagAdded: tag => `${tag} added`,
   tagAlreadyAdded: tag => `${tag} is already added`,
   tagInputKeyboardHelp: 'Press Backspace or Delete to remove this tag.',

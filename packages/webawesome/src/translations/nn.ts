@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} flytta til posisjon ${position} av ${total}`,
   columns: 'Kolonnar',
   compactPageXOfY: (page, total) => `${page} av ${total}`,
+  completed: 'Fullført',
   copied: 'Kopiert',
   copy: 'Kopier',
   createOption: value => `Opprett "${value}"`,
@@ -38,6 +39,7 @@ const translation: Translation = {
   dayPeriod: 'AM/PM',
   decrement: 'Reduser',
   deselectAllRows: 'Fjern val av alle radar',
+  disabled: 'Deaktivert',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Tom',
@@ -62,6 +64,7 @@ const translation: Translation = {
   jumpForwardX: count => `Hopp ${count} sider fram`,
   lastPage: 'Siste side',
   loading: 'Lastar',
+  locked: 'Låst',
   minute: 'Minutt',
   month: 'Månad',
   moreOptions: 'Fleire alternativ',
@@ -73,7 +76,9 @@ const translation: Translation = {
   nextVideo: 'Neste video',
   nextYear: 'Neste år',
   noData: 'Inga data',
+  noOptions: 'Ingen alternativ',
   noResults: 'Ingen treff',
+  notCompleted: 'Ikkje fullført',
   now: 'No',
   numCharacters: num => {
     if (num === 1) return '1 teikn';
@@ -83,6 +88,11 @@ const translation: Translation = {
     if (num === 1) return '1 teikn att';
     return `${num} teikn att`;
   },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Ingen tilgjengelege alternativ';
+    if (num === 1) return 'Eitt alternativ tilgjengeleg';
+    return `${num} alternativ tilgjengelege`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return 'Ingen alternativ valt';
     if (num === 1) return 'Eitt alternativ valt';
@@ -90,6 +100,8 @@ const translation: Translation = {
   },
   numRowsCopied: num => (num === 1 ? '1 rad kopiert' : `${num} radar kopierte`),
   numRowsSelected: num => (num === 1 ? '1 rad vald' : `${num} radar valde`),
+  optionPosition: (label, position, total) => `${label}, ${position} av ${total}`,
+  optionsLoadError: 'Alternativa kunne ikkje lastast',
   pageXOfY: (page, total) => `Side ${page} av ${total}`,
   pagination: 'Paginering',
   pause: 'Pause',
@@ -146,6 +158,8 @@ const translation: Translation = {
   sortColumn: 'Sorter kolonne',
   sortDescending: 'Sorter synkande',
   startDate: 'Startdato',
+  steps: 'Steg',
+  stepXOfY: (step, total) => `Steg ${step} av ${total}`,
   tagAdded: tag => `${tag} lagd til`,
   tagAlreadyAdded: tag => `${tag} er allereie lagd til`,
   tagInputKeyboardHelp: 'Trykk på Backspace eller Delete for å fjerne denne taggen.',

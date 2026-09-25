@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} verplaatst naar positie ${position} van ${total}`,
   columns: 'Kolommen',
   compactPageXOfY: (page, total) => `${page} van ${total}`,
+  completed: 'Voltooid',
   copied: 'Gekopieerd',
   copy: 'Kopiëren',
   createOption: value => `"${value}" aanmaken`,
@@ -39,6 +40,7 @@ const translation: Translation = {
   dayPeriod: 'AM/PM',
   decrement: 'Verlagen',
   deselectAllRows: 'Alle rijen deselecteren',
+  disabled: 'Uitgeschakeld',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Leeg',
@@ -63,6 +65,7 @@ const translation: Translation = {
   jumpForwardX: count => `${count} pagina's vooruit`,
   lastPage: 'Laatste pagina',
   loading: 'Bezig met laden',
+  locked: 'Vergrendeld',
   minute: 'Minuut',
   month: 'Maand',
   moreOptions: 'Meer opties',
@@ -74,7 +77,9 @@ const translation: Translation = {
   nextVideo: 'Volgende video',
   nextYear: 'Volgend jaar',
   noData: 'Geen gegevens',
+  noOptions: 'Geen opties',
   noResults: 'Geen overeenkomende resultaten',
+  notCompleted: 'Niet voltooid',
   now: 'Nu',
   numCharacters: num => {
     if (num === 1) return '1 teken';
@@ -84,6 +89,11 @@ const translation: Translation = {
     if (num === 1) return '1 teken resterend';
     return `${num} tekens resterend`;
   },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Geen opties beschikbaar';
+    if (num === 1) return '1 optie beschikbaar';
+    return `${num} opties beschikbaar`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return 'Geen optie geselecteerd';
     if (num === 1) return '1 optie geselecteerd';
@@ -91,6 +101,8 @@ const translation: Translation = {
   },
   numRowsCopied: num => (num === 1 ? '1 rij gekopieerd' : `${num} rijen gekopieerd`),
   numRowsSelected: num => (num === 1 ? '1 rij geselecteerd' : `${num} rijen geselecteerd`),
+  optionPosition: (label, position, total) => `${label}, ${position} van ${total}`,
+  optionsLoadError: 'De opties konden niet worden geladen',
   pageXOfY: (page, total) => `Pagina ${page} van ${total}`,
   pagination: 'Paginering',
   pause: 'Pauzeren',
@@ -147,6 +159,8 @@ const translation: Translation = {
   sortColumn: 'Kolom sorteren',
   sortDescending: 'Aflopend sorteren',
   startDate: 'Begindatum',
+  steps: 'Stappen',
+  stepXOfY: (step, total) => `Stap ${step} van ${total}`,
   tagAdded: tag => `${tag} toegevoegd`,
   tagAlreadyAdded: tag => `${tag} is al toegevoegd`,
   tagInputKeyboardHelp: 'Druk op Backspace of Delete om deze tag te verwijderen.',

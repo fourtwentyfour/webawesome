@@ -10,7 +10,7 @@ import styles from './timeline.styles.js';
  *  independent, already-happened (or planned) event.
  * @documentation https://webawesome.com/docs/components/timeline
  * @status experimental
- * @since 3.14
+ * @since 3.15
  *
  * @dependency wa-timeline-item
  *

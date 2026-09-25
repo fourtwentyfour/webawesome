@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} déplacée à la position ${position} sur ${total}`,
   columns: 'Colonnes',
   compactPageXOfY: (page, total) => `${page} sur ${total}`,
+  completed: 'Terminé',
   copied: 'Copié',
   copy: 'Copier',
   createOption: value => `Créer « ${value} »`,
@@ -39,6 +40,7 @@ const translation: Translation = {
   dayPeriod: 'AM/PM',
   decrement: 'Diminuer',
   deselectAllRows: 'Désélectionner toutes les lignes',
+  disabled: 'Désactivé',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Vide',
@@ -63,6 +65,7 @@ const translation: Translation = {
   jumpForwardX: count => `Avancer de ${count} pages`,
   lastPage: 'Dernière page',
   loading: 'Chargement',
+  locked: 'Verrouillé',
   minute: 'Minute',
   month: 'Mois',
   moreOptions: "Plus d'options",
@@ -74,7 +77,9 @@ const translation: Translation = {
   nextVideo: 'Vidéo suivante',
   nextYear: 'Année suivante',
   noData: 'Aucune donnée',
+  noOptions: 'Aucune option',
   noResults: 'Aucun résultat correspondant',
+  notCompleted: 'Non terminé',
   now: 'Maintenant',
   numCharacters: num => {
     if (num === 1) return '1 caractère';
@@ -84,6 +89,11 @@ const translation: Translation = {
     if (num === 1) return '1 caractère restant';
     return `${num} caractères restants`;
   },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Aucune option disponible';
+    if (num === 1) return '1 option disponible';
+    return `${num} options disponibles`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return 'Aucune option sélectionnée';
     if (num === 1) return '1 option sélectionnée';
@@ -91,6 +101,8 @@ const translation: Translation = {
   },
   numRowsCopied: num => (num === 1 ? '1 ligne copiée' : `${num} lignes copiées`),
   numRowsSelected: num => (num === 1 ? '1 ligne sélectionnée' : `${num} lignes sélectionnées`),
+  optionPosition: (label, position, total) => `${label}, ${position} sur ${total}`,
+  optionsLoadError: 'Impossible de charger les options',
   pageXOfY: (page, total) => `Page ${page} sur ${total}`,
   pagination: 'Pagination',
   pause: 'Pause',
@@ -147,6 +159,8 @@ const translation: Translation = {
   sortColumn: 'Trier la colonne',
   sortDescending: 'Trier par ordre décroissant',
   startDate: 'Date de début',
+  steps: 'Étapes',
+  stepXOfY: (step, total) => `Étape ${step} sur ${total}`,
   tagAdded: tag => `${tag} ajouté`,
   tagAlreadyAdded: tag => `${tag} existe déjà`,
   tagInputKeyboardHelp: 'Appuyez sur Retour arrière ou Suppr pour retirer cette étiquette.',

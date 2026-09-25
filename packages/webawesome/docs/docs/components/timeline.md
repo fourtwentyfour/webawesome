@@ -220,7 +220,7 @@ Use the `marker` slot to replace an item's default dot with custom content, such
 </wa-timeline>
 ```
 
-An order-tracking timeline reuses the same idea: give completed steps a checkmark and `success` variant, and leave the rest at the default marker so the eye can tell what's actually happened from what's still ahead.
+An order-tracking timeline reuses the same idea: give completed entries a checkmark and `success` variant, and leave the rest at the default marker so the eye can tell what's actually happened from what's still ahead.
 
 ```html {.example}
 <wa-card>
@@ -498,7 +498,7 @@ A timeline is just markup — there's no API for adding an entry, the same way t
 <script>
   const timelineLive = document.getElementById('timeline-live');
   const timelineLiveButton = document.getElementById('timeline-live-advance');
-  const timelineLiveSteps = [
+  const timelineLiveEntries = [
     {
       time: '9:47 AM',
       variant: 'brand',
@@ -515,7 +515,7 @@ A timeline is just markup — there's no API for adding an entry, the same way t
   ];
 
   timelineLiveButton.addEventListener('click', () => {
-    const next = timelineLiveSteps.shift();
+    const next = timelineLiveEntries.shift();
     if (!next) return;
 
     timelineLive.querySelector('wa-timeline-item[current]')?.removeAttribute('current');
@@ -526,7 +526,7 @@ A timeline is just markup — there's no API for adding an entry, the same way t
     item.innerHTML = `<time slot="opposite">${next.time}</time><strong>${next.label}</strong>${next.body ? `<p>${next.body}</p>` : ''}`;
     timelineLive.append(item);
 
-    if (timelineLiveSteps.length === 0) timelineLiveButton.disabled = true;
+    if (timelineLiveEntries.length === 0) timelineLiveButton.disabled = true;
   });
 </script>
 ```

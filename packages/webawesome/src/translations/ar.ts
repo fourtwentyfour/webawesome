@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `تم نقل ${label} إلى الموضع ${position} من ${total}`,
   columns: 'الأعمدة',
   compactPageXOfY: (page, total) => `${page} من ${total}`,
+  completed: 'مكتمل',
   copied: 'تم النسخ',
   copy: 'نسخ',
   createOption: value => `إنشاء "${value}"`,
@@ -38,6 +39,7 @@ const translation: Translation = {
   dayPeriod: 'ص/م',
   decrement: 'إنقاص',
   deselectAllRows: 'إلغاء تحديد كل الصفوف',
+  disabled: 'معطل',
   dropFileHere: 'أسقط الملف هنا أو انقر للتصفح',
   dropFilesHere: 'أسقط الملفات هنا أو انقر للتصفح',
   empty: 'فارغ',
@@ -72,6 +74,7 @@ const translation: Translation = {
   },
   lastPage: 'الصفحة الأخيرة',
   loading: 'جاري التحميل',
+  locked: 'مقفل',
   minute: 'الدقيقة',
   month: 'الشهر',
   moreOptions: 'مزيد من الخيارات',
@@ -83,7 +86,9 @@ const translation: Translation = {
   nextVideo: 'الفيديو التالي',
   nextYear: 'السنة التالية',
   noData: 'لا توجد بيانات',
+  noOptions: 'لا توجد خيارات',
   noResults: 'لا توجد نتائج مطابقة',
+  notCompleted: 'غير مكتمل',
   now: 'الآن',
   numCharacters: num => {
     if (num === 0) return '0 أحرف';
@@ -98,6 +103,13 @@ const translation: Translation = {
     if (num === 2) return '2 حرفان متبقيان';
     if (num > 2 && num < 11) return `${num} أحرف متبقية`;
     return `${num} حرفًا متبقيًا`;
+  },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'لا توجد خيارات متاحة';
+    if (num === 1) return 'خيار واحد متاح';
+    if (num === 2) return 'خياران متاحان';
+    if (num > 2 && num < 11) return `${num} خيارات متاحة`;
+    return `${num} خيارًا متاحًا`;
   },
   numOptionsSelected: num => {
     if (num === 0) return 'لم يتم تحديد أي خيارات';
@@ -120,6 +132,8 @@ const translation: Translation = {
     if (num > 2 && num < 11) return `تم تحديد ${num} صفوف`;
     return `تم تحديد ${num} صفًا`;
   },
+  optionPosition: (label, position, total) => `${label}، ${position} من ${total}`,
+  optionsLoadError: 'تعذر تحميل الخيارات',
   pageXOfY: (page, total) => `الصفحة ${page} من ${total}`,
   pagination: 'ترقيم الصفحات',
   pause: 'إيقاف مؤقت',
@@ -180,6 +194,8 @@ const translation: Translation = {
   sortColumn: 'فرز العمود',
   sortDescending: 'فرز تنازلي',
   startDate: 'تاريخ البدء',
+  steps: 'الخطوات',
+  stepXOfY: (step, total) => `الخطوة ${step} من ${total}`,
   tagAdded: tag => `تمت إضافة ${tag}`,
   tagAlreadyAdded: tag => `الوسم ${tag} مضاف بالفعل`,
   tagInputKeyboardHelp: 'اضغط Backspace أو Delete لإزالة هذا الوسم.',

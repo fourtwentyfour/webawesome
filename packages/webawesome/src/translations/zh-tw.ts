@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} 已移動至第 ${position} 個位置，共 ${total} 個`,
   columns: '欄',
   compactPageXOfY: (page, total) => `${page} / ${total}`,
+  completed: '已完成',
   copied: '已複製',
   copy: '複製',
   createOption: value => `建立「${value}」`,
@@ -38,6 +39,7 @@ const translation: Translation = {
   dayPeriod: '上午/下午',
   decrement: '減少',
   deselectAllRows: '取消選擇所有列',
+  disabled: '已停用',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: '空',
@@ -62,6 +64,7 @@ const translation: Translation = {
   jumpForwardX: count => `向後跳 ${count} 頁`,
   lastPage: '最後一頁',
   loading: '載入中',
+  locked: '已鎖定',
   minute: '分鐘',
   month: '月',
   moreOptions: '更多選項',
@@ -73,10 +76,16 @@ const translation: Translation = {
   nextVideo: '下一個影片',
   nextYear: '下一年',
   noData: '無資料',
+  noOptions: '暫無選項',
   noResults: '無相符的結果',
+  notCompleted: '未完成',
   now: '現在',
   numCharacters: num => `${num}個字元`,
   numCharactersRemaining: num => `剩餘${num}個字元`,
+  numOptionsAvailable: num => {
+    if (num === 0) return '沒有可用選項';
+    return `${num} 個可用選項`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return '未選擇任何項目';
     if (num === 1) return '已選擇 1 個項目';
@@ -84,6 +93,8 @@ const translation: Translation = {
   },
   numRowsCopied: num => `已複製 ${num} 列`,
   numRowsSelected: num => `已選擇 ${num} 列`,
+  optionPosition: (label, position, total) => `${label}，${position} / ${total}`,
+  optionsLoadError: '無法載入選項',
   pageXOfY: (page, total) => `第 ${page} 頁，共 ${total} 頁`,
   pagination: '分頁',
   pause: '暫停',
@@ -140,6 +151,8 @@ const translation: Translation = {
   sortColumn: '排序欄',
   sortDescending: '降冪排序',
   startDate: '開始日期',
+  steps: '步驟',
+  stepXOfY: (step, total) => `第 ${step} 步，共 ${total} 步`,
   tagAdded: tag => `已新增 ${tag}`,
   tagAlreadyAdded: tag => `${tag} 已新增`,
   tagInputKeyboardHelp: '按 Backspace 或 Delete 鍵移除此標籤。',

@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} flyttad till position ${position} av ${total}`,
   columns: 'Kolumner',
   compactPageXOfY: (page, total) => `${page} av ${total}`,
+  completed: 'Slutförd',
   copied: 'Kopierade',
   copy: 'Kopiera',
   createOption: value => `Skapa "${value}"`,
@@ -38,6 +39,7 @@ const translation: Translation = {
   dayPeriod: 'FM/EM',
   decrement: 'Minska',
   deselectAllRows: 'Avmarkera alla rader',
+  disabled: 'Inaktiverad',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Tom',
@@ -62,6 +64,7 @@ const translation: Translation = {
   jumpForwardX: count => `Hoppa framåt ${count} sidor`,
   lastPage: 'Sista sidan',
   loading: 'Läser in',
+  locked: 'Låst',
   minute: 'Minut',
   month: 'Månad',
   moreOptions: 'Fler alternativ',
@@ -73,7 +76,9 @@ const translation: Translation = {
   nextVideo: 'Nästa video',
   nextYear: 'Nästa år',
   noData: 'Inga data',
+  noOptions: 'Inga alternativ',
   noResults: 'Inga matchande resultat',
+  notCompleted: 'Inte slutförd',
   now: 'Nu',
   numCharacters: num => {
     if (num === 1) return '1 tecken';
@@ -83,6 +88,11 @@ const translation: Translation = {
     if (num === 1) return '1 tecken kvar';
     return `${num} tecken kvar`;
   },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Inga alternativ tillgängliga';
+    if (num === 1) return '1 alternativ tillgängligt';
+    return `${num} alternativ tillgängliga`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return 'Inga alternativ har valts';
     if (num === 1) return '1 alternativ valt';
@@ -90,6 +100,8 @@ const translation: Translation = {
   },
   numRowsCopied: num => (num === 1 ? '1 rad kopierad' : `${num} rader kopierade`),
   numRowsSelected: num => (num === 1 ? '1 rad markerad' : `${num} rader markerade`),
+  optionPosition: (label, position, total) => `${label}, ${position} av ${total}`,
+  optionsLoadError: 'Alternativen kunde inte läsas in',
   pageXOfY: (page, total) => `Sida ${page} av ${total}`,
   pagination: 'Paginering',
   pause: 'Pausa',
@@ -146,6 +158,8 @@ const translation: Translation = {
   sortColumn: 'Sortera kolumn',
   sortDescending: 'Sortera fallande',
   startDate: 'Startdatum',
+  steps: 'Steg',
+  stepXOfY: (step, total) => `Steg ${step} av ${total}`,
   tagAdded: tag => `${tag} tillagd`,
   tagAlreadyAdded: tag => `${tag} är redan tillagd`,
   tagInputKeyboardHelp: 'Tryck på Backspace eller Delete för att ta bort den här taggen.',

@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `Przeniesiono ${label} na pozycję ${position} z ${total}`,
   columns: 'Kolumny',
   compactPageXOfY: (page, total) => `${page} z ${total}`,
+  completed: 'Ukończono',
   copied: 'Skopiowane',
   copy: 'Kopiuj',
   createOption: value => `Utwórz "${value}"`,
@@ -39,6 +40,7 @@ const translation: Translation = {
   dayPeriod: 'AM/PM',
   decrement: 'Zmniejsz',
   deselectAllRows: 'Odznacz wszystkie wiersze',
+  disabled: 'Wyłączone',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Puste',
@@ -73,6 +75,7 @@ const translation: Translation = {
   },
   lastPage: 'Ostatnia strona',
   loading: 'Ładowanie',
+  locked: 'Zablokowano',
   minute: 'Minuta',
   month: 'Miesiąc',
   moreOptions: 'Więcej opcji',
@@ -84,7 +87,9 @@ const translation: Translation = {
   nextVideo: 'Następny film',
   nextYear: 'Następny rok',
   noData: 'Brak danych',
+  noOptions: 'Brak opcji',
   noResults: 'Brak pasujących wyników',
+  notCompleted: 'Nieukończono',
   now: 'Teraz',
   numCharacters: num => {
     if (num === 1) return '1 znak';
@@ -99,6 +104,14 @@ const translation: Translation = {
     const mod100 = num % 100;
     if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `Pozostały ${num} znaki`;
     return `Pozostało ${num} znaków`;
+  },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Brak dostępnych opcji';
+    if (num === 1) return 'Dostępna 1 opcja';
+    const mod10 = num % 10;
+    const mod100 = num % 100;
+    if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `Dostępne ${num} opcje`;
+    return `Dostępnych ${num} opcji`;
   },
   numOptionsSelected: num => {
     if (num === 0) return 'Nie wybrano opcji';
@@ -119,6 +132,8 @@ const translation: Translation = {
     if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `Wybrano ${num} wiersze`;
     return `Wybrano ${num} wierszy`;
   },
+  optionPosition: (label, position, total) => `${label}, ${position} z ${total}`,
+  optionsLoadError: 'Nie udało się wczytać opcji',
   pageXOfY: (page, total) => `Strona ${page} z ${total}`,
   pagination: 'Paginacja',
   pause: 'Wstrzymaj',
@@ -182,6 +197,8 @@ const translation: Translation = {
   sortColumn: 'Sortuj kolumnę',
   sortDescending: 'Sortuj malejąco',
   startDate: 'Data początkowa',
+  steps: 'Kroki',
+  stepXOfY: (step, total) => `Krok ${step} z ${total}`,
   tagAdded: tag => `Dodano ${tag}`,
   tagAlreadyAdded: tag => `Tag ${tag} już istnieje`,
   tagInputKeyboardHelp: 'Naciśnij Backspace lub Delete, aby usunąć ten tag.',

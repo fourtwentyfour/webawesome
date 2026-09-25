@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} перемещён на позицию ${position} из ${total}`,
   columns: 'Столбцы',
   compactPageXOfY: (page, total) => `${page} из ${total}`,
+  completed: 'Завершено',
   copied: 'Скопировано',
   copy: 'Скопировать',
   createOption: value => `Создать «${value}»`,
@@ -39,6 +40,7 @@ const translation: Translation = {
   dayPeriod: 'AM/PM',
   decrement: 'Уменьшить',
   deselectAllRows: 'Снять выделение со всех строк',
+  disabled: 'Отключено',
   dropFileHere: 'Перетащите файл сюда или нажмите, чтобы выбрать',
   dropFilesHere: 'Перетащите файлы сюда или нажмите, чтобы выбрать',
   empty: 'Пусто',
@@ -75,6 +77,7 @@ const translation: Translation = {
   },
   lastPage: 'Последняя страница',
   loading: 'Загрузка',
+  locked: 'Заблокировано',
   minute: 'Минута',
   month: 'Месяц',
   moreOptions: 'Дополнительные параметры',
@@ -86,7 +89,9 @@ const translation: Translation = {
   nextVideo: 'Следующее видео',
   nextYear: 'Следующий год',
   noData: 'Нет данных',
+  noOptions: 'Нет вариантов',
   noResults: 'Нет совпадений',
+  notCompleted: 'Не завершено',
   now: 'Сейчас',
   numCharacters: num => {
     const mod10 = num % 10;
@@ -101,6 +106,14 @@ const translation: Translation = {
     if (mod10 === 1 && mod100 !== 11) return `Остался ${num} символ`;
     if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `Осталось ${num} символа`;
     return `Осталось ${num} символов`;
+  },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Нет доступных вариантов';
+    const mod10 = num % 10;
+    const mod100 = num % 100;
+    if (mod10 === 1 && mod100 !== 11) return `Доступен ${num} вариант`;
+    if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `Доступно ${num} варианта`;
+    return `Доступно ${num} вариантов`;
   },
   numOptionsSelected: num => {
     if (num === 0) return 'выбрано 0 вариантов';
@@ -121,6 +134,8 @@ const translation: Translation = {
     if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `Выбрано ${num} строки`;
     return `Выбрано ${num} строк`;
   },
+  optionPosition: (label, position, total) => `${label}, ${position} из ${total}`,
+  optionsLoadError: 'Не удалось загрузить варианты',
   pageXOfY: (page, total) => `Страница ${page} из ${total}`,
   pagination: 'Постраничная навигация',
   pause: 'Пауза',
@@ -184,6 +199,8 @@ const translation: Translation = {
   sortColumn: 'Сортировать столбец',
   sortDescending: 'Сортировать по убыванию',
   startDate: 'Дата начала',
+  steps: 'Шаги',
+  stepXOfY: (step, total) => `Шаг ${step} из ${total}`,
   tagAdded: tag => `${tag} добавлен`,
   tagAlreadyAdded: tag => `Тег ${tag} уже добавлен`,
   tagInputKeyboardHelp: 'Нажмите Backspace или Delete, чтобы удалить этот тег.',

@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} به موقعیت ${position} از ${total} منتقل شد`,
   columns: 'ستون‌ها',
   compactPageXOfY: (page, total) => `${page} از ${total}`,
+  completed: 'تکمیل شده',
   copied: 'کپی شد',
   copy: 'کپی',
   createOption: value => `ایجاد "${value}"`,
@@ -39,6 +40,7 @@ const translation: Translation = {
   dayPeriod: 'ق.ظ/ب.ظ',
   decrement: 'کاهش',
   deselectAllRows: 'لغو انتخاب همه ردیف‌ها',
+  disabled: 'غیرفعال',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'خالی',
@@ -63,6 +65,7 @@ const translation: Translation = {
   jumpForwardX: count => `${count} صفحه به جلو`,
   lastPage: 'صفحه آخر',
   loading: 'بارگزاری',
+  locked: 'قفل شده',
   minute: 'دقیقه',
   month: 'ماه',
   moreOptions: 'گزینه‌های بیشتر',
@@ -74,7 +77,9 @@ const translation: Translation = {
   nextVideo: 'ویدیوی بعدی',
   nextYear: 'سال بعد',
   noData: 'داده‌ای وجود ندارد',
+  noOptions: 'هیچ گزینه‌ای وجود ندارد',
   noResults: 'نتیجه منطبقی وجود ندارد',
+  notCompleted: 'تکمیل نشده',
   now: 'اکنون',
   numCharacters: num => {
     if (num === 1) return '1 نویسه';
@@ -84,12 +89,18 @@ const translation: Translation = {
     if (num === 1) return '1 نویسه باقیمانده';
     return `${num} نویسه باقیمانده`;
   },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'هیچ گزینه‌ای در دسترس نیست';
+    return `${num} گزینه در دسترس است`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return 'هیچ گزینه‌ای انتخاب نشده است';
     return `${num} گزینه انتخاب شده است`;
   },
   numRowsCopied: num => (num === 1 ? '1 ردیف کپی شده است' : `${num} ردیف کپی شده است`),
   numRowsSelected: num => (num === 1 ? '1 ردیف انتخاب شده است' : `${num} ردیف انتخاب شده است`),
+  optionPosition: (label, position, total) => `${label}، ${position} از ${total}`,
+  optionsLoadError: 'گزینه‌ها بارگذاری نشدند',
   pageXOfY: (page, total) => `صفحه ${page} از ${total}`,
   pagination: 'صفحه‌بندی',
   pause: 'مکث',
@@ -146,6 +157,8 @@ const translation: Translation = {
   sortColumn: 'مرتب‌سازی ستون',
   sortDescending: 'مرتب‌سازی نزولی',
   startDate: 'تاریخ شروع',
+  steps: 'مراحل',
+  stepXOfY: (step, total) => `مرحله ${step} از ${total}`,
   tagAdded: tag => `${tag} افزوده شد`,
   tagAlreadyAdded: tag => `${tag} قبلاً افزوده شده است`,
   tagInputKeyboardHelp: 'برای حذف این برچسب، Backspace یا Delete را فشار دهید.',

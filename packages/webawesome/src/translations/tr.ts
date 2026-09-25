@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} ${total} konumdan ${position}. konuma taşındı`,
   columns: 'Sütunlar',
   compactPageXOfY: (page, total) => `${page} / ${total}`,
+  completed: 'Tamamlandı',
   copied: 'Kopyalandı',
   copy: 'Kopya',
   createOption: value => `"${value}" oluştur`,
@@ -39,6 +40,7 @@ const translation: Translation = {
   dayPeriod: 'ÖÖ/ÖS',
   decrement: 'Azalt',
   deselectAllRows: 'Tüm satırların seçimini kaldır',
+  disabled: 'Devre dışı',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Boş',
@@ -63,6 +65,7 @@ const translation: Translation = {
   jumpForwardX: count => `${count} sayfa ileri atla`,
   lastPage: 'Son sayfa',
   loading: 'Yükleme',
+  locked: 'Kilitli',
   minute: 'Dakika',
   month: 'Ay',
   moreOptions: 'Daha fazla seçenek',
@@ -74,7 +77,9 @@ const translation: Translation = {
   nextVideo: 'Sonraki video',
   nextYear: 'Sonraki yıl',
   noData: 'Veri yok',
+  noOptions: 'Seçenek yok',
   noResults: 'Eşleşen sonuç yok',
+  notCompleted: 'Tamamlanmadı',
   now: 'Şimdi',
   numCharacters: num => {
     if (num === 1) return '1 karakter';
@@ -84,6 +89,11 @@ const translation: Translation = {
     if (num === 1) return '1 karakter kaldı';
     return `${num} karakter kaldı`;
   },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Kullanılabilir seçenek yok';
+    if (num === 1) return '1 seçenek kullanılabilir';
+    return `${num} seçenek kullanılabilir`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return 'Hiçbir seçenek seçilmedi';
     if (num === 1) return '1 seçenek seçildi';
@@ -91,6 +101,8 @@ const translation: Translation = {
   },
   numRowsCopied: num => (num === 1 ? '1 satır kopyalandı' : `${num} satır kopyalandı`),
   numRowsSelected: num => (num === 1 ? '1 satır seçildi' : `${num} satır seçildi`),
+  optionPosition: (label, position, total) => `${label}, ${position} / ${total}`,
+  optionsLoadError: 'Seçenekler yüklenemedi',
   pageXOfY: (page, total) => `Sayfa ${page} / ${total}`,
   pagination: 'Sayfalandırma',
   pause: 'Duraklat',
@@ -147,6 +159,8 @@ const translation: Translation = {
   sortColumn: 'Sütunu sırala',
   sortDescending: 'Azalan sırala',
   startDate: 'Başlangıç tarihi',
+  steps: 'Adımlar',
+  stepXOfY: (step, total) => `Adım ${step} / ${total}`,
   tagAdded: tag => `${tag} eklendi`,
   tagAlreadyAdded: tag => `${tag} zaten eklendi`,
   tagInputKeyboardHelp: 'Bu etiketi kaldırmak için Backspace veya Delete tuşuna basın.',

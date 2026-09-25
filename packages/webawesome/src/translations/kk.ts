@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} ${total} ішінен ${position} позицияға жылжытылды`,
   columns: 'Бағаналар',
   compactPageXOfY: (page, total) => `${total} ішінен ${page}`,
+  completed: 'Аяқталды',
   copied: 'Көшірілді',
   copy: 'Көшіру',
   createOption: value => `"${value}" жасау`,
@@ -39,6 +40,7 @@ const translation: Translation = {
   dayPeriod: 'AM/PM',
   decrement: 'Азайту',
   deselectAllRows: 'Барлық жолдың таңдауын алу',
+  disabled: 'Өшірілген',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Бос',
@@ -63,6 +65,7 @@ const translation: Translation = {
   jumpForwardX: count => `${count} бетке алға өту`,
   lastPage: 'Соңғы бет',
   loading: 'Жүктелуде',
+  locked: 'Құлыпталған',
   minute: 'Минут',
   month: 'Ай',
   moreOptions: 'Қосымша опциялар',
@@ -74,7 +77,9 @@ const translation: Translation = {
   nextVideo: 'Келесі бейне',
   nextYear: 'Келесі жыл',
   noData: 'Деректер жоқ',
+  noOptions: 'Опциялар жоқ',
   noResults: 'Сәйкес нәтижелер жоқ',
+  notCompleted: 'Аяқталмады',
   now: 'Қазір',
   numCharacters: num => {
     if (num === 1) return '1 таңба';
@@ -84,6 +89,10 @@ const translation: Translation = {
     if (num === 1) return '1 таңба қалды';
     return `${num} таңба қалды`;
   },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Қолжетімді опциялар жоқ';
+    return `${num} опция қолжетімді`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return 'Ештеңе таңдалмады';
     if (num < 6 || num === 7) return `${num}-еу таңдалды`;
@@ -92,6 +101,8 @@ const translation: Translation = {
   },
   numRowsCopied: num => (num === 1 ? '1 жол көшірілді' : `${num} жол көшірілді`),
   numRowsSelected: num => (num === 1 ? '1 жол таңдалды' : `${num} жол таңдалды`),
+  optionPosition: (label, position, total) => `${label}, ${total} ішінен ${position}`,
+  optionsLoadError: 'Опцияларды жүктеу мүмкін болмады',
   pageXOfY: (page, total) => `${total} ішінен ${page} бет`,
   pagination: 'Беттеу',
   pause: 'Тоқтату',
@@ -148,6 +159,8 @@ const translation: Translation = {
   sortColumn: 'Бағананы сұрыптау',
   sortDescending: 'Кему ретімен сұрыптау',
   startDate: 'Басталу күні',
+  steps: 'Қадамдар',
+  stepXOfY: (step, total) => `${total} қадамның ${step}-і`,
   tagAdded: tag => `${tag} қосылды`,
   tagAlreadyAdded: tag => `${tag} тегі әлдеқашан қосылған`,
   tagInputKeyboardHelp: 'Бұл тегті жою үшін Backspace немесе Delete пернесін басыңыз.',

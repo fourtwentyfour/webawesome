@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} premješten na poziciju ${position} od ${total}`,
   columns: 'Stupci',
   compactPageXOfY: (page, total) => `${page} od ${total}`,
+  completed: 'Dovršeno',
   copied: 'Kopirano',
   copy: 'Kopiraj',
   createOption: value => `Stvori "${value}"`,
@@ -38,6 +39,7 @@ const translation: Translation = {
   dayPeriod: 'AM/PM',
   decrement: 'Smanji',
   deselectAllRows: 'Poništi odabir svih redaka',
+  disabled: 'Onemogućeno',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Prazno',
@@ -74,6 +76,7 @@ const translation: Translation = {
   },
   lastPage: 'Posljednja stranica',
   loading: 'Učitavanje',
+  locked: 'Zaključano',
   minute: 'Minuta',
   month: 'Mjesec',
   moreOptions: 'Više opcija',
@@ -85,7 +88,9 @@ const translation: Translation = {
   nextVideo: 'Sljedeći video',
   nextYear: 'Sljedeća godina',
   noData: 'Nema podataka',
+  noOptions: 'Nema opcija',
   noResults: 'Nema odgovarajućih rezultata',
+  notCompleted: 'Nije dovršeno',
   now: 'Sada',
   numCharacters: num => {
     if (num === 1) return '1 znak';
@@ -100,6 +105,14 @@ const translation: Translation = {
     const mod100 = num % 100;
     if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `${num} preostala znaka`;
     return `${num} preostalih znakova`;
+  },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Nema dostupnih opcija';
+    if (num === 1) return '1 opcija je dostupna';
+    const mod10 = num % 10;
+    const mod100 = num % 100;
+    if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `${num} opcije su dostupne`;
+    return `${num} opcija je dostupno`;
   },
   numOptionsSelected: num => {
     if (num === 0) return 'Nije odabrana nijedna opcija';
@@ -120,6 +133,8 @@ const translation: Translation = {
     if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `${num} retka odabrana`;
     return `${num} redaka odabrano`;
   },
+  optionPosition: (label, position, total) => `${label}, ${position} od ${total}`,
+  optionsLoadError: 'Opcije se ne mogu učitati',
   pageXOfY: (page, total) => `Stranica ${page} od ${total}`,
   pagination: 'Straničenje',
   pause: 'Pauziraj',
@@ -182,6 +197,8 @@ const translation: Translation = {
   sortColumn: 'Sortiraj stupac',
   sortDescending: 'Sortiraj silazno',
   startDate: 'Datum početka',
+  steps: 'Koraci',
+  stepXOfY: (step, total) => `Korak ${step} od ${total}`,
   tagAdded: tag => `${tag} dodano`,
   tagAlreadyAdded: tag => `Oznaka ${tag} već postoji`,
   tagInputKeyboardHelp: 'Pritisnite Backspace ili Delete za uklanjanje ove oznake.',

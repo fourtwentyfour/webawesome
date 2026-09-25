@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} flyttet til position ${position} af ${total}`,
   columns: 'Kolonner',
   compactPageXOfY: (page, total) => `${page} af ${total}`,
+  completed: 'Fuldført',
   copied: 'Kopieret',
   copy: 'Kopier',
   createOption: value => `Opret "${value}"`,
@@ -38,6 +39,7 @@ const translation: Translation = {
   dayPeriod: 'AM/PM',
   decrement: 'Formindsk',
   deselectAllRows: 'Fravælg alle rækker',
+  disabled: 'Deaktiveret',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Tom',
@@ -62,6 +64,7 @@ const translation: Translation = {
   jumpForwardX: count => `Spring ${count} sider frem`,
   lastPage: 'Sidste side',
   loading: 'Indlæser',
+  locked: 'Låst',
   minute: 'Minut',
   month: 'Måned',
   moreOptions: 'Flere muligheder',
@@ -73,7 +76,9 @@ const translation: Translation = {
   nextVideo: 'Næste video',
   nextYear: 'Næste år',
   noData: 'Ingen data',
+  noOptions: 'Ingen muligheder',
   noResults: 'Ingen matchende resultater',
+  notCompleted: 'Ikke fuldført',
   now: 'Nu',
   numCharacters: num => {
     if (num === 1) return '1 tegn';
@@ -83,6 +88,11 @@ const translation: Translation = {
     if (num === 1) return '1 tegn tilbage';
     return `${num} tegn tilbage`;
   },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Ingen tilgængelige muligheder';
+    if (num === 1) return '1 mulighed tilgængelig';
+    return `${num} muligheder tilgængelige`;
+  },
   numOptionsSelected: (num: number) => {
     if (num === 0) return 'Ingen valgt';
     if (num === 1) return '1 valgt';
@@ -90,6 +100,8 @@ const translation: Translation = {
   },
   numRowsCopied: num => (num === 1 ? '1 række kopieret' : `${num} rækker kopieret`),
   numRowsSelected: num => (num === 1 ? '1 række valgt' : `${num} rækker valgt`),
+  optionPosition: (label, position, total) => `${label}, ${position} af ${total}`,
+  optionsLoadError: 'Mulighederne kunne ikke indlæses',
   pageXOfY: (page, total) => `Side ${page} af ${total}`,
   pagination: 'Sidenavigation',
   pause: 'Sæt på pause',
@@ -146,6 +158,8 @@ const translation: Translation = {
   sortColumn: 'Sortér kolonne',
   sortDescending: 'Sortér faldende',
   startDate: 'Startdato',
+  steps: 'Trin',
+  stepXOfY: (step, total) => `Trin ${step} af ${total}`,
   tagAdded: tag => `${tag} tilføjet`,
   tagAlreadyAdded: tag => `${tag} er allerede tilføjet`,
   tagInputKeyboardHelp: 'Tryk på Backspace eller Delete for at fjerne dette tag.',

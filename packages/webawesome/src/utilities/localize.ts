@@ -53,6 +53,7 @@ export interface Translation extends DefaultTranslation {
   columnMovedToPosition: (label: string, position: number, total: number) => string;
   columns: string;
   compactPageXOfY: (page: number, total: number) => string;
+  completed: string;
   copied: string;
   copy: string;
   createOption: (value: string) => string;
@@ -64,6 +65,7 @@ export interface Translation extends DefaultTranslation {
   dayPeriod: string;
   decrement: string;
   deselectAllRows: string;
+  disabled: string;
   dropFileHere: string;
   dropFilesHere: string;
   empty: string;
@@ -88,6 +90,7 @@ export interface Translation extends DefaultTranslation {
   jumpForwardX: (count: number) => string;
   lastPage: string;
   loading: string;
+  locked: string;
   minute: string;
   month: string;
   moreOptions: string;
@@ -99,13 +102,18 @@ export interface Translation extends DefaultTranslation {
   nextVideo: string;
   nextYear: string;
   noData: string;
+  noOptions: string;
   noResults: string;
+  notCompleted: string;
   now: string;
   numCharacters: (num: number) => string;
   numCharactersRemaining: (num: number) => string;
+  numOptionsAvailable: (num: number) => string;
   numOptionsSelected: (num: number) => string;
   numRowsCopied: (num: number) => string;
   numRowsSelected: (num: number) => string;
+  optionPosition: (label: string, position: number, total: number) => string;
+  optionsLoadError: string;
   pageXOfY: (page: number, total: number) => string;
   pagination: string;
   pause: string;
@@ -156,6 +164,8 @@ export interface Translation extends DefaultTranslation {
   sortColumn: string;
   sortDescending: string;
   startDate: string;
+  steps: string;
+  stepXOfY: (step: number, total: number) => string;
   tagAdded: (tag: string) => string;
   tagAlreadyAdded: (tag: string) => string;
   tagInputKeyboardHelp: string;

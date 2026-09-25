@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} переміщено на позицію ${position} з ${total}`,
   columns: 'Стовпці',
   compactPageXOfY: (page, total) => `${page} з ${total}`,
+  completed: 'Завершено',
   copied: 'Скопійовано',
   copy: 'Скопіювати',
   createOption: value => `Створити «${value}»`,
@@ -39,6 +40,7 @@ const translation: Translation = {
   dayPeriod: 'AM/PM',
   decrement: 'Зменшити',
   deselectAllRows: 'Скасувати вибір усіх рядків',
+  disabled: 'Вимкнено',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Порожньо',
@@ -75,6 +77,7 @@ const translation: Translation = {
   },
   lastPage: 'Остання сторінка',
   loading: 'Завантаження',
+  locked: 'Заблоковано',
   minute: 'Хвилина',
   month: 'Місяць',
   moreOptions: 'Більше параметрів',
@@ -86,7 +89,9 @@ const translation: Translation = {
   nextVideo: 'Наступне відео',
   nextYear: 'Наступний рік',
   noData: 'Немає даних',
+  noOptions: 'Немає варіантів',
   noResults: 'Немає відповідних результатів',
+  notCompleted: 'Не завершено',
   now: 'Зараз',
   numCharacters: num => {
     const mod10 = num % 10;
@@ -101,6 +106,14 @@ const translation: Translation = {
     if (mod10 === 1 && mod100 !== 11) return `Залишився ${num} символ`;
     if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `Залишилося ${num} символи`;
     return `Залишилося ${num} символів`;
+  },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Немає доступних варіантів';
+    const mod10 = num % 10;
+    const mod100 = num % 100;
+    if (mod10 === 1 && mod100 !== 11) return `Доступний ${num} варіант`;
+    if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `Доступно ${num} варіанти`;
+    return `Доступно ${num} варіантів`;
   },
   numOptionsSelected: num => {
     const n = num % 10;
@@ -123,6 +136,8 @@ const translation: Translation = {
     if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return `Вибрано ${num} рядки`;
     return `Вибрано ${num} рядків`;
   },
+  optionPosition: (label, position, total) => `${label}, ${position} з ${total}`,
+  optionsLoadError: 'Не вдалося завантажити варіанти',
   pageXOfY: (page, total) => `Сторінка ${page} з ${total}`,
   pagination: 'Нумерація сторінок',
   pause: 'Пауза',
@@ -186,6 +201,8 @@ const translation: Translation = {
   sortColumn: 'Сортувати стовпець',
   sortDescending: 'Сортувати за спаданням',
   startDate: 'Дата початку',
+  steps: 'Кроки',
+  stepXOfY: (step, total) => `Крок ${step} з ${total}`,
   tagAdded: tag => `${tag} додано`,
   tagAlreadyAdded: tag => `Тег ${tag} уже додано`,
   tagInputKeyboardHelp: 'Натисніть Backspace або Delete, щоб видалити цей тег.',

@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} を ${total} 列中 ${position} 番目に移動しました`,
   columns: '列',
   compactPageXOfY: (page, total) => `${total} 中 ${page}`,
+  completed: '完了',
   copied: 'コピーしました',
   copy: 'コピー',
   createOption: value => `「${value}」を作成`,
@@ -38,6 +39,7 @@ const translation: Translation = {
   dayPeriod: '午前/午後',
   decrement: '減らす',
   deselectAllRows: 'すべての行の選択を解除',
+  disabled: '無効',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: '空',
@@ -62,6 +64,7 @@ const translation: Translation = {
   jumpForwardX: count => `${count} ページ進む`,
   lastPage: '最後のページ',
   loading: '読み込み中',
+  locked: 'ロック中',
   minute: '分',
   month: '月',
   moreOptions: 'その他のオプション',
@@ -73,16 +76,24 @@ const translation: Translation = {
   nextVideo: '次の動画',
   nextYear: '翌年',
   noData: 'データがありません',
+  noOptions: '項目がありません',
   noResults: '一致する結果がありません',
+  notCompleted: '未完了',
   now: '現在',
   numCharacters: num => `${num}文字`,
   numCharactersRemaining: num => `残り${num}文字`,
+  numOptionsAvailable: num => {
+    if (num === 0) return '利用できる項目がありません';
+    return `${num} 個の項目が利用できます`;
+  },
   numOptionsSelected: num => {
     if (num === 0) return '項目が選択されていません';
     return `${num} 個の項目が選択されました`;
   },
   numRowsCopied: num => `${num} 行をコピーしました`,
   numRowsSelected: num => `${num} 行を選択中`,
+  optionPosition: (label, position, total) => `${label}、${total} 中 ${position}`,
+  optionsLoadError: '項目を読み込めませんでした',
   pageXOfY: (page, total) => `${total} ページ中 ${page} ページ`,
   pagination: 'ページ送り',
   pause: '一時停止',
@@ -139,6 +150,8 @@ const translation: Translation = {
   sortColumn: '列を並べ替え',
   sortDescending: '降順で並べ替え',
   startDate: '開始日',
+  steps: 'ステップ',
+  stepXOfY: (step, total) => `ステップ ${step} / ${total}`,
   tagAdded: tag => `${tag} を追加しました`,
   tagAlreadyAdded: tag => `${tag} はすでに追加されています`,
   tagInputKeyboardHelp: 'Backspace または Delete キーを押すと、このタグを削除します。',

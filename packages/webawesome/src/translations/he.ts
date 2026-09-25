@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} הועברה למיקום ${position} מתוך ${total}`,
   columns: 'עמודות',
   compactPageXOfY: (page, total) => `${page} מתוך ${total}`,
+  completed: 'הושלם',
   copied: 'מוּעֲתָק',
   copy: 'העתק',
   createOption: value => `יצירת "${value}"`,
@@ -38,6 +39,7 @@ const translation: Translation = {
   dayPeriod: 'לפנה"צ/אחה"צ',
   decrement: 'הקטן',
   deselectAllRows: 'בטל בחירה של כל השורות',
+  disabled: 'מושבת',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'ריק',
@@ -62,6 +64,7 @@ const translation: Translation = {
   jumpForwardX: count => `דלג ${count} עמודים קדימה`,
   lastPage: 'עמוד אחרון',
   loading: 'טוען',
+  locked: 'נעול',
   minute: 'דקה',
   month: 'חודש',
   moreOptions: 'אפשרויות נוספות',
@@ -73,7 +76,9 @@ const translation: Translation = {
   nextVideo: 'הסרטון הבא',
   nextYear: 'השנה הבאה',
   noData: 'אין נתונים',
+  noOptions: 'אין אפשרויות',
   noResults: 'אין תוצאות תואמות',
+  notCompleted: 'לא הושלם',
   now: 'עכשיו',
   numCharacters: num => {
     if (num === 1) return '1 תו';
@@ -82,6 +87,11 @@ const translation: Translation = {
   numCharactersRemaining: num => {
     if (num === 1) return '1 תו נותר';
     return `${num} תווים נותרים`;
+  },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'אין אפשרויות זמינות';
+    if (num === 1) return 'אפשרות אחת זמינה';
+    return `${num} אפשרויות זמינות`;
   },
   numOptionsSelected: num => {
     if (num === 0) return 'לא נבחרו אפשרויות';
@@ -96,6 +106,8 @@ const translation: Translation = {
     if (num === 1) return 'נבחרה שורה אחת';
     return `נבחרו ${num} שורות`;
   },
+  optionPosition: (label, position, total) => `${label}, ${position} מתוך ${total}`,
+  optionsLoadError: 'לא ניתן היה לטעון את האפשרויות',
   pageXOfY: (page, total) => `עמוד ${page} מתוך ${total}`,
   pagination: 'עימוד',
   pause: 'השהייה',
@@ -152,6 +164,8 @@ const translation: Translation = {
   sortColumn: 'מיין עמודה',
   sortDescending: 'מיין בסדר יורד',
   startDate: 'תאריך התחלה',
+  steps: 'שלבים',
+  stepXOfY: (step, total) => `שלב ${step} מתוך ${total}`,
   tagAdded: tag => `${tag} נוסף`,
   tagAlreadyAdded: tag => `התגית ${tag} כבר קיימת`,
   tagInputKeyboardHelp: 'הקש Backspace או Delete להסרת התגית הזו.',

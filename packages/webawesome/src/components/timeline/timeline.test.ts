@@ -18,7 +18,7 @@ describe('<wa-timeline>', () => {
 
       it('should be accessible', async () => {
         const el = await fixture<WaTimeline>(html`
-          <wa-timeline label="Order history">
+          <wa-timeline>
             <wa-timeline-item>Ordered</wa-timeline-item>
             <wa-timeline-item current>Shipped</wa-timeline-item>
           </wa-timeline>

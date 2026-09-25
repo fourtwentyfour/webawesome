@@ -27,6 +27,7 @@ const translation: Translation = {
   columnMovedToPosition: (label, position, total) => `${label} přesunut na pozici ${position} z ${total}`,
   columns: 'Sloupce',
   compactPageXOfY: (page, total) => `${page} z ${total}`,
+  completed: 'Dokončeno',
   copied: 'Zkopírováno',
   copy: 'Kopírovat',
   createOption: value => `Vytvořit "${value}"`,
@@ -38,6 +39,7 @@ const translation: Translation = {
   dayPeriod: 'dop./odp.',
   decrement: 'Snížit',
   deselectAllRows: 'Zrušit výběr všech řádků',
+  disabled: 'Zakázáno',
   dropFileHere: 'Drop file here or click to browse',
   dropFilesHere: 'Drop files here or click to browse',
   empty: 'Prázdné',
@@ -70,6 +72,7 @@ const translation: Translation = {
   },
   lastPage: 'Poslední stránka',
   loading: 'Nahrává se',
+  locked: 'Uzamčeno',
   minute: 'Minuta',
   month: 'Měsíc',
   moreOptions: 'Další možnosti',
@@ -81,7 +84,9 @@ const translation: Translation = {
   nextVideo: 'Další video',
   nextYear: 'Další rok',
   noData: 'Žádná data',
+  noOptions: 'Žádné možnosti',
   noResults: 'Žádné odpovídající výsledky',
+  notCompleted: 'Nedokončeno',
   now: 'Nyní',
   numCharacters: num => {
     if (num === 1) return '1 znak';
@@ -92,6 +97,12 @@ const translation: Translation = {
     if (num === 1) return '1 zbývající znak';
     if (num >= 2 && num <= 4) return `${num} zbývající znaky`;
     return `${num} zbývajících znaků`;
+  },
+  numOptionsAvailable: num => {
+    if (num === 0) return 'Nejsou k dispozici žádné možnosti';
+    if (num === 1) return 'K dispozici je 1 možnost';
+    if (num >= 2 && num <= 4) return `K dispozici jsou ${num} možnosti`;
+    return `K dispozici je ${num} možností`;
   },
   numOptionsSelected: num => {
     if (num === 0) return 'Nejsou vybrány žádné možnosti';
@@ -108,6 +119,8 @@ const translation: Translation = {
     if (num >= 2 && num <= 4) return `Jsou vybrány ${num} řádky`;
     return `Je vybráno ${num} řádků`;
   },
+  optionPosition: (label, position, total) => `${label}, ${position} z ${total}`,
+  optionsLoadError: 'Možnosti se nepodařilo načíst',
   pageXOfY: (page, total) => `Stránka ${page} z ${total}`,
   pagination: 'Stránkování',
   pause: 'Pozastavit',
@@ -166,6 +179,8 @@ const translation: Translation = {
   sortColumn: 'Seřadit sloupec',
   sortDescending: 'Seřadit sestupně',
   startDate: 'Datum zahájení',
+  steps: 'Kroky',
+  stepXOfY: (step, total) => `Krok ${step} z ${total}`,
   tagAdded: tag => `${tag} přidáno`,
   tagAlreadyAdded: tag => `Štítek ${tag} již existuje`,
   tagInputKeyboardHelp: 'Stisknutím Backspace nebo Delete tento štítek odeberete.',

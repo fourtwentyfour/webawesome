@@ -14,7 +14,8 @@ export default css`
       display: block;
     }
 
-    :host([marker-placement='end']) {
+    /* Placement only applies to vertical timelines — horizontal items always stack opposite / rail / content. */
+    :host([marker-placement='end']:not([orientation='horizontal'])) {
       --_marker-placement: end;
     }
 

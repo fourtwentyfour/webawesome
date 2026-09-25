@@ -16,7 +16,7 @@ import styles from './timeline-item.styles.js';
  *  history or activity feed.
  * @documentation https://webawesome.com/docs/components/timeline-item
  * @status experimental
- * @since 3.14
+ * @since 3.15
  *
  * @slot - The item's main content, such as a title and description.
  * @slot opposite - Optional content shown on the opposite side of the rail from the main content, commonly a date or
@@ -31,6 +31,10 @@ import styles from './timeline-item.styles.js';
  *
  * @cssproperty [--marker-size=2em] - The size of the item's marker. Usually set on `<wa-timeline>` so every item
  *  matches.
+ * @cssproperty [--connector-width=var(--wa-border-width-m)] - The thickness of the connector that follows this item.
+ *  Usually set on `<wa-timeline>`; set it here to make one item's connector stand out.
+ * @cssproperty [--connector-gap=0.35em] - The gap between this item's marker and its connector. Usually set on
+ *  `<wa-timeline>`.
  *
  * @cssstate current - Applied when the `current` attribute is set.
  */
