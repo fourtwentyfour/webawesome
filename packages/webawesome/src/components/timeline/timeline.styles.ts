@@ -4,40 +4,16 @@ export default css`
   @layer wa-component {
     :host {
       --gap: var(--wa-space-l);
-      --marker-size: 2em;
+      --marker-size: 1em;
+      --connector-color: var(--wa-color-neutral-fill-normal);
       --connector-width: var(--wa-border-width-m);
       --connector-gap: 0.35em;
-      --_marker-placement: start;
-      --_orientation: vertical;
-      --_animate-on-scroll: 0;
 
       display: block;
     }
 
-    /* Placement only applies to vertical timelines — horizontal items always stack opposite / rail / content. */
-    :host([marker-placement='end']:not([orientation='horizontal'])) {
-      --_marker-placement: end;
-    }
-
-    :host([orientation='horizontal']) {
-      --_orientation: horizontal;
-    }
-
-    /* Vertical only — a row of horizontal items all enter the viewport together, so there's no per-item scroll
-       progress to animate against. */
-    :host([animate-on-scroll]:not([orientation='horizontal'])) {
-      --_animate-on-scroll: 1;
-    }
-
+    /* The list owns the column tracks and every item subgrids into them, so the rail stays straight. */
     .timeline {
-      display: block;
-    }
-
-    /* The list owns the column tracks (opposite / rail / content) and every item subgrids into them, so the rail stays
-       straight and the opposite column is sized by the widest opposite content across all items. When no item slots
-       opposite content, that column collapses to nothing. Items add their own spacing beside the rail (see
-       timeline-item.styles.ts), so the grid has no column gap of its own. */
-    .list {
       display: grid;
       grid-template-columns: [opposite-start] auto [opposite-end rail-start] auto [rail-end content-start] 1fr [content-end];
       row-gap: var(--gap);
@@ -46,12 +22,11 @@ export default css`
       list-style: none;
     }
 
-    :host([marker-placement='end']) .list {
+    :host([marker-placement='end']) .timeline {
       grid-template-columns: [content-start] 1fr [content-end rail-start] auto [rail-end opposite-start] auto [opposite-end];
     }
 
-    /* Alternate: content / rail / content, so the rail lands dead center. Each item picks its side below. */
-    :host([marker-placement='alternate']) .list {
+    :host([marker-placement='alternate']) .timeline {
       grid-template-columns: 1fr [rail-start] auto [rail-end] 1fr;
     }
 
@@ -61,17 +36,8 @@ export default css`
       grid-column: 1 / -1;
     }
 
-    :host(:not([orientation='horizontal'])[marker-placement='alternate']) ::slotted(wa-timeline-item:nth-child(odd)) {
-      --_marker-placement: alternate-start;
-    }
-
-    :host(:not([orientation='horizontal'])[marker-placement='alternate']) ::slotted(wa-timeline-item:nth-child(even)) {
-      --_marker-placement: alternate-end;
-    }
-
-    /* Horizontal: items sit in equal-width columns and subgrid into three rows (opposite / rail / content), so every
-       marker lines up no matter how tall each item's opposite content is. */
-    :host([orientation='horizontal']) .list {
+    /* Horizontal */
+    :host([orientation='horizontal']) .timeline {
       grid-auto-flow: column;
       grid-auto-columns: 1fr;
       grid-template-columns: none;

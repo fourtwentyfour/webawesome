@@ -1,15 +1,9 @@
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot.js';
-import { watch } from '../../internal/watch.js';
 import WebAwesomeElement from '../../internal/webawesome-element.js';
 import variantStyles from '../../styles/component/variants.styles.js';
 import styles from './timeline-item.styles.js';
-
-// This component reads its layout (orientation, marker placement) entirely through CSS container style queries
-// against custom properties the parent <wa-timeline> sets — see timeline-item.styles.ts. A timeline item's layout
-// only ever depends on its own sibling index (`alternate`) and the parent's own attributes, both of which CSS can
-// already see on its own, so no MutationObserver/ResizeObserver bridge is needed here.
 
 /**
  * @summary Timeline items represent a single, dated entry inside a `<wa-timeline>`, such as one event in an order
@@ -20,8 +14,8 @@ import styles from './timeline-item.styles.js';
  *
  * @slot - The item's main content, such as a title and description.
  * @slot opposite - Optional content shown on the opposite side of the rail from the main content, commonly a date or
- *  timestamp. Consider wrapping it in a `<time>` element.
- * @slot marker - Custom content, such as a `<wa-icon>` or `<wa-avatar>`, that replaces the default dot marker.
+ *  timestamp, such as a `<wa-format-date>` or `<wa-relative-time>`.
+ * @slot icon - An element, such as `<wa-icon>` or `<wa-avatar>`, that replaces the default dot in the marker.
  *
  * @csspart timeline-item - The component's outer wrapper.
  * @csspart marker - The circular marker that marks the item's position on the timeline.
@@ -29,14 +23,14 @@ import styles from './timeline-item.styles.js';
  * @csspart content - The wrapper around the default slot.
  * @csspart opposite - The wrapper around the `opposite` slot.
  *
- * @cssproperty [--marker-size=2em] - The size of the item's marker. Usually set on `<wa-timeline>` so every item
- *  matches.
- * @cssproperty [--connector-width=var(--wa-border-width-m)] - The thickness of the connector that follows this item.
- *  Usually set on `<wa-timeline>`; set it here to make one item's connector stand out.
- * @cssproperty [--connector-gap=0.35em] - The gap between this item's marker and its connector. Usually set on
- *  `<wa-timeline>`.
- *
- * @cssstate current - Applied when the `current` attribute is set.
+ * @cssproperty --marker-size - The size of the item's marker. Inherited from `<wa-timeline>`; set it here to make one
+ *  item stand out.
+ * @cssproperty --connector-color - The color of the connector that follows this item when its `variant` is `neutral`.
+ *  Inherited from `<wa-timeline>`.
+ * @cssproperty --connector-width - The thickness of the connector that follows this item. Inherited from
+ *  `<wa-timeline>`; set it here to make one item's connector stand out.
+ * @cssproperty --connector-gap - The gap between this item's marker and its connector. Inherited from `<wa-timeline>`.
+ *  Use a length such as `0px`, not a bare `0`, to remove it.
  */
 @customElement('wa-timeline-item')
 export default class WaTimelineItem extends WebAwesomeElement {
@@ -44,14 +38,11 @@ export default class WaTimelineItem extends WebAwesomeElement {
 
   private readonly hasSlotController = new HasSlotController(this, 'opposite');
 
-  /** Colors the item's marker with a semantic color. */
-  @property({ reflect: true }) variant: 'neutral' | 'brand' | 'success' | 'warning' | 'danger' | '' = '';
-
   /**
-   * Marks this as the timeline's current or most-recent entry, e.g. the last-known status in an order history. Sets
-   * `aria-current` on the item so assistive technology announces it. Setting it doesn't affect any other item.
+   * Colors the item's marker and the connector after it. The color is cosmetic; pair it with an icon and a clear label
+   * when an entry needs to read as failed or flagged.
    */
-  @property({ type: Boolean, reflect: true }) current = false;
+  @property({ reflect: true }) variant: 'neutral' | 'brand' | 'success' | 'warning' | 'danger' = 'neutral';
 
   /**
    * Only required for SSR. Set to `true` if you're slotting in an `opposite` element, so the server-rendered markup
@@ -60,17 +51,6 @@ export default class WaTimelineItem extends WebAwesomeElement {
   @property({ type: Boolean, attribute: 'with-opposite' }) withOpposite = false;
 
   @property({ reflect: true }) role = 'listitem';
-
-  @watch('current')
-  handleCurrentChange() {
-    this.customStates.set('current', this.current);
-
-    if (this.current) {
-      this.setAttribute('aria-current', 'true');
-    } else {
-      this.removeAttribute('aria-current');
-    }
-  }
 
   render() {
     const hasOpposite = this.hasSlotController.test('opposite', 'withOpposite');
@@ -82,7 +62,7 @@ export default class WaTimelineItem extends WebAwesomeElement {
         </span>
         <span class="rail">
           <span part="marker" class="marker">
-            <slot name="marker"></slot>
+            <slot name="icon"></slot>
           </span>
           <span part="connector" class="connector"></span>
         </span>
@@ -93,6 +73,12 @@ export default class WaTimelineItem extends WebAwesomeElement {
     `;
   }
 }
+
+// The change-in-update warning is required for this component because HasSlotController calls requestUpdate() in
+// response to slotchange events after first render, including the synthetic slotchange WebAwesomeElement dispatches
+// post-hydration to work around SSR not being able to catch real slotchange events. See
+// https://lit.dev/docs/tools/development/#development-build-runtime-warnings
+WaTimelineItem.disableWarning?.('change-in-update');
 
 declare global {
   interface HTMLElementTagNameMap {
