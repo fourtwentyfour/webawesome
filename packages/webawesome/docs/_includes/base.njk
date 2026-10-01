@@ -1,34 +1,23 @@
 <!DOCTYPE html>
-{% if hasAnchors == undefined %}{% set hasAnchors = true %}{% endif %}
-{% if hasBanner == undefined %}{% set hasBanner = true %}{% endif %}
-{% if hasThemeSelector == undefined %}{% set hasThemeSelector = true %}{% endif %}
-{% if hasSiteDialog == undefined %}{% set hasSiteDialog = true %}{% endif %}
-{% if hasGeneratedTitle == undefined %}{% set hasGeneratedTitle = true %}{% endif %}
-{% if hasLinkify == undefined %}{% set hasLinkify = true %}{% endif %}
-{% set bareLayout = layout | stripExtension %}
-{% set pageType = pageClass or page.fileSlug or 'home' %}
+{#- Whitespace control (the dashes) keeps these tags from leaving blank lines in the served HTML. -#}
+{%- if hasAnchors == undefined %}{% set hasAnchors = true %}{% endif -%}
+{%- if hasBanner == undefined %}{% set hasBanner = true %}{% endif -%}
+{%- if hasThemeSelector == undefined %}{% set hasThemeSelector = true %}{% endif -%}
+{%- if hasSiteDialog == undefined %}{% set hasSiteDialog = true %}{% endif -%}
+{%- if hasGeneratedTitle == undefined %}{% set hasGeneratedTitle = true %}{% endif -%}
+{%- if hasLinkify == undefined %}{% set hasLinkify = true %}{% endif -%}
+{%- set bareLayout = layout | stripExtension -%}
+{%- set pageType = pageClass or page.fileSlug or 'home' %}
 <html
   lang="en"
   data-fa-kit-code="38c11e3f20"
   data-version="{{ package.version }}"
-  class="
-    {% raw %}
-      {% if not ssr %}
-        wa-cloak
-      {% endif %}
-    {% endraw %}
-    {% if bareLayout === 'site' or pageType === 'home' %}
-      wa-brand-orange wa-palette-default wa-theme-site
-    {% else %}
-      {% raw %}
-        wa-brand-{{ req.cookies.webawesome_brand }}
-        wa-palette-{{ req.cookies.webawesome_palette }}
-        wa-theme-{{ req.cookies.webawesome_theme }}
-      {% endraw %}
-    {% endif %}
-  "
-  {% if hasAnchors == false %} data-no-anchor{% endif %}
-  {% if hasLinkify == false %} data-no-linkify{% endif %}>
+  class="{% raw %}{% if not ssr %}wa-cloak{% endif %}{% endraw %}
+    {%- if bareLayout === 'site' or pageType === 'home' %} wa-brand-orange wa-palette-default wa-theme-site
+    {%- else %} {% raw %}wa-brand-{{ req.cookies.webawesome_brand }} wa-palette-{{ req.cookies.webawesome_palette }} wa-theme-{{ req.cookies.webawesome_theme }}{% endraw %}
+    {%- endif %}"
+  {%- if hasAnchors == false %} data-no-anchor{% endif %}
+  {%- if hasLinkify == false %} data-no-linkify{% endif %}>
 <head>
   {% include 'head.njk' %}
   <meta name="theme-color" content="#f36944">
