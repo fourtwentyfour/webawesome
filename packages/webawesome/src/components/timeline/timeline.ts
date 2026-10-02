@@ -96,8 +96,8 @@ export default class WaTimeline extends WebAwesomeElement {
   }
 
   /**
-   * Hands each item its layout as `data-wa-timeline-*` attributes, the way `<wa-radio-group>` marks its radios. A
-   * reversed timeline can't reorder its light DOM, so each item also gets a numbered slot rendered last to first,
+   * Hands each item its layout as `data-wa-timeline-*` attributes.
+   * A reversed timeline can't reorder its light DOM, so each item also gets a numbered slot rendered last to first,
    * which keeps reading and focus order matching the screen. Each item also learns the previous item's variant for
    * its centered connector.
    */

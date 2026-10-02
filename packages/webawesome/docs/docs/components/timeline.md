@@ -265,10 +265,10 @@ Set the `orientation` attribute to `horizontal` to lay items out in a row instea
 
 ### Marker Placement
 
-Set the `marker-placement` attribute to `end` to move every item's marker to the end side of the timeline instead of the start.
+Set the `marker-placement` attribute to `end` to move every item to the end of the parent.
 
 ```html {.example}
-<wa-timeline marker-placement="end">
+<wa-timeline marker-placement="end" class="marker-placement">
   <wa-timeline-item>
     <wa-format-date slot="opposite" date="2026-03-02" month="short" day="numeric"></wa-format-date>
     <span class="wa-heading-m">Draft written</span>
@@ -282,6 +282,12 @@ Set the `marker-placement` attribute to `end` to move every item's marker to the
     <span class="wa-heading-m">Published</span>
   </wa-timeline-item>
 </wa-timeline>
+
+<style>
+ .marker-placement wa-timeline-item {
+    text-align: right;
+  }
+</style>
 ```
 
 Set it to `alternate` to flip each item to the opposite side of its sibling, which suits a wide, centered timeline.
